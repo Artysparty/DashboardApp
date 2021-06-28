@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { LoginRequestDTO, LoginResponseDTO } from 'src/app/models/user-auth.DTO';
+import { LoginRequestDTO, LoginResponseDTO } from 'src/app/models/user.dto';
 
 @Injectable({
   providedIn: 'root',
