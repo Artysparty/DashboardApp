@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { UserAuthDTO } from 'src/app/models/user-auth.DTO';
+import { LoginRequestDTO, LoginResponseDTO } from 'src/app/models/user-auth.DTO';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  postUserAuth(body: UserAuthDTO): Observable<UserAuthDTO> {
-    return this.http.post<UserAuthDTO>(this.baseUrl, body);
+  postUserAuth(body: LoginRequestDTO): Observable<LoginResponseDTO> {
+    return this.http.post<LoginResponseDTO>(this.baseUrl, body);
   }
 }
