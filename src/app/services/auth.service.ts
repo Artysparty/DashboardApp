@@ -14,6 +14,8 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   postUserAuth(userAuth: UserAuthDTO): Observable<UserAuthDTO> {
-    return this.http.post<UserAuthDTO>(this.baseUrl, userAuth);
+
+    const body = {username: userAuth.username, password: userAuth.password}; 
+    return this.http.post<UserAuthDTO>(this.baseUrl, body);
   }
 }
