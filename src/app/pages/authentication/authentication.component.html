@@ -3,15 +3,14 @@
   <mat-card-subtitle>Enter your Username and password to continue</mat-card-subtitle>
 
   <mat-card-content [formGroup]="form">
-    
+
     <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
+      <mat-label>Enter your username</mat-label>
       <input
         matInput
-        placeholder="pat@example.com"
+        placeholder="Username"
         formControlName="usernameField"
         required/>
-      <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
