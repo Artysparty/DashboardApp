@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
-import { LoginRequestDTO, LoginResponseDTO } from 'src/app/models/user.dto';
+import { LoginResponseDTO } from 'src/app/models/user.dto';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,28 +11,25 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './authentication.component.html',
   styleUrls: ['./authentication.component.scss'],
 })
-export class AuthenticationComponent implements OnInit {
+export class AuthenticationComponent{
+  
   hide = true;
-  form!: FormGroup;
-
-  loginRequestData!: LoginRequestDTO;
+  form: FormGroup;
   private subscriptions$ = new Subscription();
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.form = this.fb.group({
-      usernameField: [''],
-      passwordField: [''],
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]]
     });
   }
 
-  ngOnInit(): void {
-    this.loginRequestData.password = this.form.controls.passwordField.value;
-    this.loginRequestData.username = this.form.controls.usernameField.value;
+  submit(){
     this.subscriptions$.add(
       this.authService
-        .postUserAuth(this.loginRequestData)
+        .login(this.form.value)
         .subscribe((response: LoginResponseDTO) => {
-
+          console.log(response);
         })
     );
   }

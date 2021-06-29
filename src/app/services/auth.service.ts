@@ -13,7 +13,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  postUserAuth(body: LoginRequestDTO): Observable<LoginResponseDTO> {
+  login(body: LoginRequestDTO): Observable<LoginResponseDTO> {
     return this.http.post<LoginResponseDTO>(this.baseUrl, body);
   }
 }
