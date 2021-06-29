@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+import { Observable, Subscription } from 'rxjs';
+
+import { LoginRequestDTO, LoginResponseDTO } from 'src/app/models/user.dto';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-authentication',
@@ -7,16 +12,28 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./authentication.component.scss'],
 })
 export class AuthenticationComponent implements OnInit {
-
   hide = true;
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  loginRequestData!: LoginRequestDTO;
+  private subscriptions$ = new Subscription();
+
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.form = this.fb.group({
-      usernameField: [""],
-      passwordField: [""]
+      usernameField: [''],
+      passwordField: [''],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginRequestData.password = this.form.controls.passwordField.value;
+    this.loginRequestData.username = this.form.controls.usernameField.value;
+    this.subscriptions$.add(
+      this.authService
+        .postUserAuth(this.loginRequestData)
+        .subscribe((response: LoginResponseDTO) => {
+
+        })
+    );
+  }
 }
