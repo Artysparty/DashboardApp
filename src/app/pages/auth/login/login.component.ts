@@ -7,11 +7,11 @@ import { LoginResponseDTO } from 'src/app/models/user.dto';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-authentication',
-  templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class AuthenticationComponent{
+export class LoginComponent{
   
   hide = true;
   form: FormGroup;
