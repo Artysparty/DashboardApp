@@ -1,35 +1,38 @@
 <mat-card>
   <mat-card-title>Аутентификация</mat-card-title>
-  <mat-card-subtitle>Введи имя пользователя и пароль чтобы продолжить</mat-card-subtitle>
 
   <mat-card-content>
     <form [formGroup]="form">
-
       <mat-form-field appearance="fill">
-        <mat-label>Enter your username</mat-label>
+        <mat-label>Введите имя пользователя</mat-label>
         <input
           matInput
           placeholder="Username"
           formControlName="username"
-          required/>
+          required
+        />
       </mat-form-field>
-  
+
       <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" />
-        <button
-          mat-icon-button
+        <mat-label>Введите пароль</mat-label>
+        <input
+          matInput
+          placeholder="Password"
           formControlName="password"
-          matSuffix
-          (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide">
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
+          [type]="'password'"
+          required
+        />
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" (click)="submit()" [disabled]="form.invalid">Подтвердить</button>
-
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="submit()"
+        [disabled]="form.invalid"
+      >
+        Войти
+      </button>
     </form>
   </mat-card-content>
 </mat-card>
