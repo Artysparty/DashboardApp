@@ -19,12 +19,12 @@ export class AuthenticationComponent{
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.form = this.fb.group({
-      username: [null, [Validators.required]],
-      password: [null, [Validators.required]]
+      username: [null, Validators.required],
+      password: [null, Validators.required]
     });
   }
 
-  submit(){
+  submit() {
     this.subscriptions$.add(
       this.authService
         .login(this.form.value)

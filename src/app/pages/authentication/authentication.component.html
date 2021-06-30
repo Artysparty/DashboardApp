@@ -28,7 +28,7 @@
         </button>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" (click)="submit()">Подтвердить</button>
+      <button mat-raised-button color="primary" type="submit" (click)="submit()" [disabled]="form.invalid">Подтвердить</button>
 
     </form>
   </mat-card-content>
