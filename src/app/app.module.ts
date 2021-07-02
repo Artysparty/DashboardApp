@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './pages/auth/auth.module';
+import { ErrorInterceptor } from './services/interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import { AuthModule } from './pages/auth/auth.module';
     AuthModule,
     AppMaterialModule,
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
