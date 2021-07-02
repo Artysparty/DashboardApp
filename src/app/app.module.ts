@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,7 +20,6 @@ import { ErrorInterceptor } from 'src/app/shared/services/interceptors/error-int
   imports: [
     HttpClientModule,
     ReactiveFormsModule, 
-    RouterModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
