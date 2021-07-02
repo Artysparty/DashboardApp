@@ -9,7 +9,7 @@ import { LoginRequestDTO, LoginResponseDTO } from 'src/app/models/user.dto';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly baseUrl = 'https://localhost:5000/api/login';
+  private readonly baseUrl = 'http://localhost:5000/api/login';
 
   constructor(private http: HttpClient) {}
 
