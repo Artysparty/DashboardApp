@@ -22,7 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          this.router.navigate(['auth/login']);
+          this.router.navigate(['/auth/login']);
         } else if (error.status === 404) {
           //redirect to not-found
         } else {
