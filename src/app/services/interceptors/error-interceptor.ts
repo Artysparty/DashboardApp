@@ -13,7 +13,7 @@ import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private router: Router){}
+  constructor(private router: Router) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -21,7 +21,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401){
+        if (error.status === 401) {
           this.router.navigate(['/login']);
         } else if (error.status === 404) {
           //redirect to not-found

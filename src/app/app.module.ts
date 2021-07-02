@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './pages/auth/auth.module';
-import { AuthService } from './services/auth.service';
 import { ErrorInterceptor } from './services/interceptors/error-interceptor';
 
 @NgModule({
@@ -24,7 +23,7 @@ import { ErrorInterceptor } from './services/interceptors/error-interceptor';
     AuthModule,
     AppMaterialModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } ],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
