@@ -24,7 +24,7 @@ import { ErrorInterceptor } from './services/interceptors/error-interceptor';
     AuthModule,
     AppMaterialModule,
   ],
-  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}, ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
