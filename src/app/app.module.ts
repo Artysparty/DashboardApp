@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
+import { LayoutsModule } from './shared/layouts/layouts.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './pages/auth/auth.module';
-import { ErrorInterceptor } from './services/interceptors/error-interceptor';
+import { ErrorInterceptor } from 'src/app/shared/services/interceptors/error-interceptor';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +21,8 @@ import { ErrorInterceptor } from './services/interceptors/error-interceptor';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AuthModule,
     AppMaterialModule,
+    LayoutsModule,
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } ],
   bootstrap: [AppComponent]

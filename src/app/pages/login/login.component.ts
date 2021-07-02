@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
 
-import { LoginResponseDTO } from 'src/app/models/user.dto';
-import { AuthService } from 'src/app/services/auth.service';
+import { LoginResponseDTO } from 'src/app/shared/models/user.dto';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
