@@ -2,23 +2,23 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './pages/auth/auth.component';
-import { LoginComponent } from './pages/auth/login/login.component';
+import { AuthModule } from './pages/auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    LoginComponent
   ],
   imports: [
     ReactiveFormsModule, 
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    AuthModule,
     AppMaterialModule,
   ],
   providers: [],
