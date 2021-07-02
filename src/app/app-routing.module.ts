@@ -5,7 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { EmptyLayoutComponent } from './shared/layouts/empty-layout/empty-layout.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'app/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/app/dashboard', pathMatch: 'full' },
   {
     path: '',
     component: AppComponent,
@@ -15,7 +15,7 @@ const routes: Routes = [
         component: EmptyLayoutComponent,
         children: [
           { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
-          { path: 'login', component: LoginComponent, pathMatch: 'full' },
+          { path: 'login', component: LoginComponent },
         ],
       },
     ],
