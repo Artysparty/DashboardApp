@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
 import { LoginResponseDTO } from '../models/user.dto';
+import { NotificationService } from './notifications.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SessionStorageService {
-  
-    saveData(user: LoginResponseDTO) {
-        sessionStorage.setItem('id', JSON.stringify(user.id));
-        sessionStorage.setItem('email', user.email);
-        sessionStorage.setItem('firstname', user.firstName);
-        sessionStorage.setItem('lastname', user.lastName);
+
+    constructor(private notifService: NotificationService) {}
+    
+    saveUser(user: LoginResponseDTO): void {
+        sessionStorage.setItem('user', JSON.stringify(user));
     }
 
-    getUserId() {
-        return sessionStorage.getItem('id');
+    getUser() {
+      try {
+        return JSON.parse(sessionStorage.user);
+      } catch(e) {
+        console.log(e);
+      }
+    }
+
+    clear(): void {
+      sessionStorage.clear();
     }
 }

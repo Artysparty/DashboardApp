@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoadingService } from './shared/services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'siblion-dashboard';
+  title = 'dashboard-test';
+
+  constructor(public loadingService: LoadingService) {
+    
+  }
 }

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { LoginResponseDTO } from 'src/app/shared/models/user.dto';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service';
 
 @Component({
@@ -13,29 +14,34 @@ import { SessionStorageService } from 'src/app/shared/services/session-storage.s
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  hide = true;
+  
   form: FormGroup;
+
   private subscriptions$ = new Subscription();
 
   constructor(
-    private fb: FormBuilder,
+    private fb: FormBuilder, 
     private authService: AuthService,
-    private ssService: SessionStorageService,
-  ) {
+    private storageService: SessionStorageService,
+    private router: Router,
+    public loadingService: LoadingService) {
     this.form = this.fb.group({
-      username: [null, Validators.required],
-      password: [null, Validators.required],
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]]
     });
   }
 
-  submit() {
+  submit(){
+    
     this.subscriptions$.add(
       this.authService
         .login(this.form.value)
         .subscribe((response: LoginResponseDTO) => {
-          console.log('response: ' + JSON.stringify(response));
-          this.ssService.saveData(response);
-          console.log(this.ssService.getUserId());
+          if (response){
+            console.log("response: " + JSON.stringify(response));
+            this.storageService.saveUser(response);
+            this.router.navigate(['/app/dashboard']);
+          }
         })
     );
   }

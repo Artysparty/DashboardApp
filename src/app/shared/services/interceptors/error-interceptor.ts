@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   HttpInterceptor,
   HttpRequest,
@@ -9,12 +8,17 @@ import {
 } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
+import { NotificationService } from '../notifications.service';
+import { Router } from '@angular/router';
 
 @Injectable()
-export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private router: Router) {}
+export class HttpConfigInterceptor implements HttpInterceptor {
 
+  constructor(
+    private notifService: NotificationService,
+    private router: Router) { }
+// rename file to kebab-case
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -22,11 +26,13 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
+          this.notifService.openSnackBar('401', false);
           this.router.navigate(['/auth/login']);
         } else if (error.status === 404) {
-          //redirect to not-found
+          this.notifService.openSnackBar('404', false);
+          this.router.navigate(['/error/not-found']);
         } else {
-          //send error.message to notification service
+          this.notifService.openSnackBar('Что-то пошло не так', false)
         }
         return throwError(error);
       })
