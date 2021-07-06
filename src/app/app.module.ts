@@ -27,11 +27,11 @@ import { LoginComponent } from './pages/login/login.component';
   declarations: [AppComponent, DashboardComponent, NotFoundComponent, LoginComponent],
   imports: [
     HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxChartsModule,
     NgbModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     AppMaterialModule,
     LayoutsModule,
