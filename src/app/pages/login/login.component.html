@@ -1,39 +1,38 @@
-<mat-card>
-    <mat-card-title>Аутентификация</mat-card-title>
-  
-    <mat-card-content>
-      <form [formGroup]="form">
-        <mat-form-field appearance="fill">
-          <mat-label>Введите имя пользователя</mat-label>
-          <input
-            matInput
-            placeholder="Имя пользователя"
-            formControlName="username"
-            required
-          />
-        </mat-form-field>
-  
-        <mat-form-field appearance="fill">
-          <mat-label>Введите пароль</mat-label>
-          <input
-            matInput
-            placeholder="Пароль"
-            formControlName="password"
-            [type]="'password'"
-            required
-          />
-        </mat-form-field>
-  
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          (click)="submit()"
-          [disabled]="form.invalid"
-        >
-          Войти
-        </button>
-      </form>
-    </mat-card-content>
-  </mat-card>
-  
+<mat-card class="auth-card">
+  <mat-card-title class="mb-4">Аутентификация</mat-card-title>
+  <mat-card-content>
+
+    <form class="d-flex flex-column" [formGroup]="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Введите имя пользователя</mat-label>
+        <input
+          matInput
+          placeholder="Username"
+          formControlName="username"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Введите пароль</mat-label>
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          [type]="'password'"
+          required
+        />
+      </mat-form-field>
+
+      <button
+        class="auth-card-button"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="submit()"
+      >
+        Войти
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

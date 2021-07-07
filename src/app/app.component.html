@@ -1,1 +1,7 @@
 <router-outlet></router-outlet>
+<div *ngIf="loadingService.isLoading | async" class="loading-container">
+  <mat-card>
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+  </mat-card>
+</div>
