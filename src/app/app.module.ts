@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -12,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './shared/app-material.module';
-import { LayoutsModule } from './shared/layouts/layouts.module'
+import { LayoutsModule } from './shared/layouts/layouts.module';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -22,9 +21,16 @@ import { HttpConfigInterceptor } from './shared/services/interceptors/error-inte
 import { LoadingInterceptor } from './shared/services/interceptors/loading.interceptor';
 import { AuthGuard } from './shared/services/guards/auth-guard.service';
 import { LoginComponent } from './pages/login/login.component';
+import { DialogComponent } from './shared/components/dialog/dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, NotFoundComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    NotFoundComponent,
+    LoginComponent,
+    DialogComponent,
+  ],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -50,5 +56,6 @@ import { LoginComponent } from './pages/login/login.component';
     AuthGuard,
   ],
   bootstrap: [AppComponent],
+  entryComponents: [DialogComponent],
 })
 export class AppModule {}

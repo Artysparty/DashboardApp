@@ -1,13 +1,17 @@
-.toolbar {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-}
-
-table {
+.info-table-container, 
+.info-table,
+.info-graphics,
+.date-forms, 
+.row {
     width: 100%;
 }
 
-.info-graphics {
-    min-height: 400px;
+.row {
+    margin: 0;
+}
+
+.date-forms,
+.info-graphics,
+.info-table-container {
+    margin: 10px 20px 10px 20px;
 }

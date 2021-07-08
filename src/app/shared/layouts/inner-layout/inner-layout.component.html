@@ -1,13 +1,12 @@
 <mat-toolbar color="primary" class="toolbar">
-    <span class="toolbar-label">My App</span>
-    <div class="toolbar-account">
-      <span></span>
-      <span></span>
-      <button mat-raised-button>Выход</button>
-    </div>
-  </mat-toolbar>
-  
-  <main class="main">
-    <router-outlet></router-outlet>
-  </main>
-  
+  <span class="toolbar-label">My App</span>
+  <div class="toolbar-account">
+    <span class="mx-1">{{ user.firstName }}</span>
+    <span class="mx-1">{{ user.lastName }}</span>
+    <button class="mx-1" mat-raised-button (click)="exit()">Выход</button>
+  </div>
+</mat-toolbar>
+
+<main class="main">
+  <router-outlet></router-outlet>
+</main>
