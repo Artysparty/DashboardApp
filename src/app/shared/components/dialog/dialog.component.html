@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Операция</h2>
+
+<mat-dialog-content>
+  <strong>Дата операции: </strong>
+  {{ operation.operationDate | date: "dd.MM.yyyy HH:mm" }}<br />
+  <strong>Баланс: </strong> {{ operation.balance | number: "1.2" }}<br />
+  <strong>Категория: </strong> {{ operation.category }}<br />
+  <strong>Код авторизации: </strong> {{ operation.authorizationCode }}<br />
+  <strong>Сумма операции: </strong> {{ operation.amount }}<br />
+  <strong>Дата обработки: </strong>
+  {{ operation.processingDate | date: "dd.MM.yyyy HH:mm" }}<br />
+  <strong>Описание транзакции: </strong> {{ operation.transactionDescription
+  }}<br />
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-primary" (click)="close()">
+    Закрыть
+  </button>
+</mat-dialog-actions>

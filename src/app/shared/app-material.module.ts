@@ -9,9 +9,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatTableModule } from "@angular/material/table";
-import { MatPaginatorModule } from "@angular/material/paginator";
-import { MatSortModule } from "@angular/material/sort";
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -27,8 +28,9 @@ import { MatSortModule } from "@angular/material/sort";
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
-    ],
+    MatSortModule,
+    MatDialogModule,
+  ],
   exports: [
     MatFormFieldModule,
     MatIconModule,
@@ -42,7 +44,8 @@ import { MatSortModule } from "@angular/material/sort";
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule,
   ],
 })
 export class AppMaterialModule {}

@@ -14,31 +14,30 @@ import { SessionStorageService } from 'src/app/shared/services/session-storage.s
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  
   form: FormGroup;
+  hide = true;
 
   private subscriptions$ = new Subscription();
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private authService: AuthService,
     private storageService: SessionStorageService,
     private router: Router,
-    public loadingService: LoadingService) {
+    public loadingService: LoadingService
+  ) {
     this.form = this.fb.group({
       username: [null, [Validators.required]],
-      password: [null, [Validators.required]]
+      password: [null, [Validators.required]],
     });
   }
 
-  submit(){
-    
+  submit() {
     this.subscriptions$.add(
       this.authService
         .login(this.form.value)
         .subscribe((response: LoginResponseDTO) => {
-          if (response){
-            console.log("response: " + JSON.stringify(response));
+          if (response) {
             this.storageService.saveUser(response);
             this.router.navigate(['/app/dashboard']);
           }
