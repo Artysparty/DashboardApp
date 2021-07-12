@@ -24,3 +24,13 @@ export interface OperationDTO {
   category: string;
   transactionDescription: string;
 }
+
+export interface ChartDTO {
+  value: number;
+  name: string;
+}
+
+export interface MultiDTO {
+  name: string;
+  series: ChartDTO[];
+}

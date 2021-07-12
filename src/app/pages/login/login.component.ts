@@ -15,6 +15,7 @@ import { SessionStorageService } from 'src/app/shared/services/session-storage.s
 })
 export class LoginComponent {
   form: FormGroup;
+  hide = true;
 
   private subscriptions$ = new Subscription();
 
@@ -37,7 +38,6 @@ export class LoginComponent {
         .login(this.form.value)
         .subscribe((response: LoginResponseDTO) => {
           if (response) {
-            console.log('response: ' + JSON.stringify(response));
             this.storageService.saveUser(response);
             this.router.navigate(['/app/dashboard']);
           }
