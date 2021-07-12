@@ -16,6 +16,8 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service';
 import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -84,7 +86,7 @@ export class DashboardComponent {
         response.operations.forEach((opertion) => {
           let op: ChartDTO = {
             value: opertion.balance,
-            name: opertion.operationDate,
+            name: this.formatDate(opertion.operationDate),
           };
           this.chartData.push(op);
         });
@@ -106,5 +108,9 @@ export class DashboardComponent {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = operation;
     this.dialog.open(DialogComponent, dialogConfig);
+  }
+
+  formatDate(data: string): string {
+    return moment(data).format("DD.MM.YYYY HH:MM");
   }
 }
