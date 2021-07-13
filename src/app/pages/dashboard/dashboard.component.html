@@ -61,7 +61,7 @@
         <ng-template #tooltipTemplate let-model="model">
           <span class="mat-body-strong">Дата операции: </span>
           {{ model.name }} <br />
-          <span class="mat-body-strong">Баланс: </span> {{ model.value | currency:'RUB':'symbol':'3.0' }} <br />
+          <span class="mat-body-strong">Баланс: </span> {{ model.value | currency:"RUB":"symbol":"3.0" }} <br />
         </ng-template>
         <ng-template #seriesTooltipTemplate></ng-template>
       </ngx-charts-line-chart>
@@ -113,13 +113,13 @@
               Сумма операции, ₽
             </th>
             <td mat-cell *matCellDef="let element">
-              {{ element.amount | currency:'RUB':'symbol':'3.0' }}
+              {{ element.amount | currency:"RUB":"symbol":"3.0" }}
             </td>
           </ng-container>
           <ng-container matColumnDef="balance">
             <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Баланс, ₽</th>
             <td mat-cell *matCellDef="let element">
-              {{ element.balance | currency:'RUB':'symbol':'3.0' }}
+              {{ element.balance | currency:"RUB":"symbol":"3.0" }}
             </td>
           </ng-container>
           <ng-container matColumnDef="transactionDescription">

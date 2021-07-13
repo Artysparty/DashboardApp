@@ -3,10 +3,10 @@
 <mat-dialog-content>
   <strong>Дата операции: </strong>
   {{ operation.operationDate | date: "dd.MM.yyyy HH:mm" }}<br />
-  <strong>Баланс: </strong> {{ operation.balance | currency:'RUB':'symbol':'3.0' }}<br />
+  <strong>Баланс: </strong> {{ operation.balance | currency:"RUB":"symbol":"3.0" }}<br />
   <strong>Категория: </strong> {{ operation.category }}<br />
   <strong>Код авторизации: </strong> {{ operation.authorizationCode }}<br />
-  <strong>Сумма операции: </strong> {{ operation.amount | currency:'RUB':'symbol':'3.0' }}<br />
+  <strong>Сумма операции: </strong> {{ operation.amount | currency:"RUB":"symbol":"3.0" }}<br />
   <strong>Дата обработки: </strong>
   {{ operation.processingDate | date: "dd.MM.yyyy HH:mm" }}<br />
   <strong>Описание транзакции: </strong> {{ operation.transactionDescription
