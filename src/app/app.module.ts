@@ -1,6 +1,12 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
+
+import localeRu from '@angular/common/locales/ru';
+
+registerLocaleData(localeRu);
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -53,7 +59,12 @@ import { DialogComponent } from './shared/components/dialog/dialog.component';
       useClass: LoadingInterceptor,
       multi: true,
     },
+    {
+      provide: LOCALE_ID,
+      useValue: 'ru',
+    },
     AuthGuard,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent],

@@ -1,17 +1,9 @@
-.info-table-container, 
-.info-table,
-.info-graphics,
-.date-forms, 
-.row {
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+
+  table {
     width: 100%;
-}
-
-.row {
-    margin: 0;
-}
-
-.date-forms,
-.info-graphics,
-.info-table-container {
-    margin: 10px 20px 10px 20px;
+  }
 }

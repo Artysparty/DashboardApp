@@ -76,6 +76,7 @@
               "browserTarget": "siblion-dashboard:build:production"
             },
             "development": {
+              "port": 4301,
               "browserTarget": "siblion-dashboard:build:development"
             }
           },

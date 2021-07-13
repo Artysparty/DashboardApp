@@ -3,10 +3,10 @@
 <mat-dialog-content>
   <strong>Дата операции: </strong>
   {{ operation.operationDate | date: "dd.MM.yyyy HH:mm" }}<br />
-  <strong>Баланс: </strong> {{ operation.balance | number: "1.2" }}<br />
+  <strong>Баланс: </strong> {{ operation.balance | currency:'RUB':'symbol':'3.0' }}<br />
   <strong>Категория: </strong> {{ operation.category }}<br />
   <strong>Код авторизации: </strong> {{ operation.authorizationCode }}<br />
-  <strong>Сумма операции: </strong> {{ operation.amount }}<br />
+  <strong>Сумма операции: </strong> {{ operation.amount | currency:'RUB':'symbol':'3.0' }}<br />
   <strong>Дата обработки: </strong>
   {{ operation.processingDate | date: "dd.MM.yyyy HH:mm" }}<br />
   <strong>Описание транзакции: </strong> {{ operation.transactionDescription
@@ -14,7 +14,7 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button mat-primary" (click)="close()">
+  <button mat-raised-button color="primary" (click)="close()">
     Закрыть
   </button>
 </mat-dialog-actions>

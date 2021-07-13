@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { EmptyLayoutComponent } from './shared/layouts/empty-layout/empty-layout.component';
+import { InnerLayoutComponent } from './shared/layouts/inner-layout/inner-layout.component';
+
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { EmptyLayoutComponent } from './shared/layouts/empty-layout/empty-layout.component';
-import { InnerLayoutComponent } from './shared/layouts/inner-layout/inner-layout.component';
+
 import { AuthGuard } from './shared/services/guards/auth-guard.service';
 
 const routes: Routes = [

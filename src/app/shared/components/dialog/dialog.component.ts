@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
+
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 import { OperationDTO } from '../../models/data.dto';
 
 @Component({
@@ -12,12 +14,12 @@ export class DialogComponent {
 
   constructor(
     private dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data: any
+    @Inject(MAT_DIALOG_DATA) data: OperationDTO
   ) {
-    this.operation = data
+    this.operation = data;
   }
 
-  close() {
+  close(): void {
     this.dialogRef.close();
   }
 }

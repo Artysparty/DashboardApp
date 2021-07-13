@@ -1,12 +1,14 @@
-<mat-toolbar color="primary" class="toolbar">
-  <span class="toolbar-label">My App</span>
-  <div class="toolbar-account">
-    <span class="mx-1">{{ user.firstName }}</span>
-    <span class="mx-1">{{ user.lastName }}</span>
-    <button class="mx-1" mat-raised-button (click)="exit()">Выход</button>
+<mat-toolbar color="primary" class="d-flex align-items-center justify-content-between">
+  <span>My App</span>
+  <div class="d-flex align-items-center" *ngIf="user">
+    <div class="d-flex align-items-center">
+      <mat-icon>account_circle</mat-icon>
+      <small class="ml-2">{{ user?.firstName + ' ' + user?.lastName }}</small>
+    </div>
+    <button class="ml-4" mat-raised-button (click)="exit()">Выход</button>
   </div>
 </mat-toolbar>
 
-<main class="main">
+<main class="main p-4">
   <router-outlet></router-outlet>
 </main>

@@ -6,19 +6,21 @@ import {
   HttpEvent,
   HttpErrorResponse,
 } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+
 import { NotificationService } from '../notifications.service';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
 
   constructor(
     private notifService: NotificationService,
-    private router: Router) { }
-// rename file to kebab-case
+    private router: Router,
+  ) { }
+  
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -32,7 +34,12 @@ export class HttpConfigInterceptor implements HttpInterceptor {
           this.notifService.openSnackBar('Имя пользователя или пароль не могут быть пустыми', false);
         } else if (error.status === 404) {
           this.notifService.openSnackBar('Пользователь не найден', false);
-          this.router.navigate(['/error/not-found']);
+          const url = this.router.url;
+          this.router.navigate(['/error/not-found'], {
+            queryParams: {
+              returnUrl: url,
+            }
+          });
         } else {
           this.notifService.openSnackBar('Что-то пошло не так', false);
         }

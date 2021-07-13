@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { Subscription } from 'rxjs';
 
-import { LoginResponseDTO } from 'src/app/shared/models/user.dto';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { LoadingService } from 'src/app/shared/services/loading.service';
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service';
+
+import { LoginResponseDTO } from 'src/app/shared/models/user.dto';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   form: FormGroup;
   hide = true;
 
@@ -24,7 +25,6 @@ export class LoginComponent {
     private authService: AuthService,
     private storageService: SessionStorageService,
     private router: Router,
-    public loadingService: LoadingService
   ) {
     this.form = this.fb.group({
       username: [null, [Validators.required]],
@@ -32,15 +32,17 @@ export class LoginComponent {
     });
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions$.unsubscribe();
+  }
+
   submit() {
     this.subscriptions$.add(
       this.authService
         .login(this.form.value)
         .subscribe((response: LoginResponseDTO) => {
-          if (response) {
-            this.storageService.saveUser(response);
-            this.router.navigate(['/app/dashboard']);
-          }
+          this.storageService.saveUser(response);
+          this.router.navigate(['/app/dashboard']);
         })
     );
   }

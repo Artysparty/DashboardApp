@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { LoadingService } from './shared/services/loading.service';
 
 @Component({
@@ -7,9 +8,5 @@ import { LoadingService } from './shared/services/loading.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dashboard-test';
-
-  constructor(public loadingService: LoadingService) {
-    
-  }
+  constructor(public loadingService: LoadingService) {}
 }
