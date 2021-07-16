@@ -52,4 +52,27 @@ describe('AuthService', () => {
 
     req.flush(response);
   });
+
+  it('wrong data should return false', () => {
+    const response: LoginResponseDTO = {
+      id: 2,
+      firstName: 'Other',
+      lastName: 'Other',
+      email: 'other@test.ru',
+    };
+    const expected = 'Test';
+    //Тесты проходят даже при неверном условии, когда они проходить не должны
+    service.login(body).subscribe((resp) => {
+      expect(resp.email).toEqual(!expected);
+    });
+
+    const req = httpTestingController.expectOne(
+      'http://localhost:5000/api/login'
+    );
+    
+    //Неверое условие ломает тест, работает верно
+    expect(req.request.method).toEqual('POST');
+
+    req.flush(response);
+  });
 });
