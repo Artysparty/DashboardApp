@@ -1,19 +1,23 @@
 import { DatePipe } from '@angular/common';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { RouterTestingModule } from '@angular/router/testing';
-import { AppMaterialModule } from 'src/app/shared/app-material.module';
-import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
-import { OperationDTO } from 'src/app/shared/models/data.dto';
 
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-
 import { MatInputHarness } from '@angular/material/input/testing';
+
+import { AppMaterialModule } from 'src/app/shared/app-material.module';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { OperationDTO } from 'src/app/shared/models/data.dto';
 
 import { DashboardComponent } from './dashboard.component';
 
