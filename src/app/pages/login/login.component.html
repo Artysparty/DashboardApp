@@ -1,11 +1,11 @@
 <mat-card>
   <mat-card-title class="mb-4">Аутентификация</mat-card-title>
   <mat-card-content>
-
     <form class="d-flex flex-column" [formGroup]="form">
       <mat-form-field appearance="fill">
         <mat-label>Введите имя пользователя</mat-label>
         <input
+          id="username"
           matInput
           placeholder="Имя пользоватя"
           formControlName="username"
@@ -16,14 +16,22 @@
       <mat-form-field appearance="fill">
         <mat-label>Введите пароль</mat-label>
         <input
+          id="password"
           matInput
           placeholder="Пароль"
           formControlName="password"
           [type]="hide ? 'password' : 'text'"
           required
         />
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Скрыть пароль'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <button
+          class="hide-button"
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Скрыть пароль'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
       </mat-form-field>
 
