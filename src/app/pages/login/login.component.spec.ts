@@ -1,10 +1,9 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AppMaterialModule } from 'src/app/shared/app-material.module';
 
 import { LoginComponent } from './login.component';
 
@@ -18,10 +17,10 @@ describe('LoginComponent', () => {
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
-        BrowserAnimationsModule,
         ReactiveFormsModule,
+        AppMaterialModule,
+        BrowserAnimationsModule
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 

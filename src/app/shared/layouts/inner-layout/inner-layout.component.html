@@ -5,7 +5,7 @@
       <mat-icon>account_circle</mat-icon>
       <small class="ml-2">{{ user?.firstName + ' ' + user?.lastName }}</small>
     </div>
-    <button class="ml-4" mat-raised-button (click)="exit()">Выход</button>
+    <button class="ml-4" mat-raised-button data-qa-id="exitBtn" (click)="exit()">Выход</button>
   </div>
 </mat-toolbar>
 

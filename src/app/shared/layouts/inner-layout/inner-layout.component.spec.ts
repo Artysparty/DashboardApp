@@ -1,7 +1,9 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { Router } from '@angular/router';
+
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { LoginResponseDTO } from '../../models/user.dto';
 
 import { InnerLayoutComponent } from './inner-layout.component';
@@ -9,6 +11,7 @@ import { InnerLayoutComponent } from './inner-layout.component';
 describe('InnerLayoutComponent', () => {
   let component: InnerLayoutComponent;
   let fixture: ComponentFixture<InnerLayoutComponent>;
+  let routerMock = { navigate: jest.fn() };
   const user: LoginResponseDTO = {
     id: 1,
     firstName: 'Test',
@@ -18,11 +21,11 @@ describe('InnerLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InnerLayoutComponent ],
+      declarations: [InnerLayoutComponent],
       imports: [RouterTestingModule],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+      providers: [{ provide: Router, useValue: routerMock }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -38,17 +41,27 @@ describe('InnerLayoutComponent', () => {
   it('should withdraw firstname and lastname', () => {
     component.user = user;
     fixture.detectChanges();
-    expect(fixture.debugElement.nativeElement.querySelector('small').textContent).toContain(`${component.user.firstName} ${component.user.lastName}`)
-  })
+    expect(
+      fixture.debugElement.nativeElement.querySelector('small').textContent
+    ).toContain(`${component.user.firstName} ${component.user.lastName}`);
+  });
 
-  it('should exit button clear session storage', () => {
-    sessionStorage.setItem('user', JSON.stringify(user));
-
-    let buttonElement = fixture.debugElement.nativeElement.querySelector('button');
-    buttonElement.triggerEventHandler('click', null);
-
-    fixture.whenStable().then(() => {
-      expect(sessionStorage.getItem('user')).toBeFalsy();
-    });
-  })
+  it(
+    'should exit button clear session storage',
+    waitForAsync(() => {
+      sessionStorage.setItem('user', JSON.stringify(user));
+      component.user = user;
+      fixture.detectChanges();
+      const spy = jest.spyOn(component, 'exit');
+      const button = fixture.debugElement.nativeElement.querySelector(
+        '[data-qa-id="exitBtn"]'
+      );
+      button.click();
+      fixture.whenStable().then(() => {
+        expect(spy).toBeCalled();
+        expect(sessionStorage.getItem('user')).toBeFalsy();
+        expect(routerMock.navigate).toHaveBeenCalledWith(['/auth/login']);
+      });
+    })
+  );
 });
