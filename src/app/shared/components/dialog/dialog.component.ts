@@ -14,7 +14,7 @@ export class DialogComponent {
 
   constructor(
     private dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data: OperationDTO
+    @Inject(MAT_DIALOG_DATA) data: OperationDTO,
   ) {
     this.operation = data;
   }

@@ -19,7 +19,7 @@ describe('LoginComponent', () => {
         RouterTestingModule,
         ReactiveFormsModule,
         AppMaterialModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
       ],
     }).compileComponents();
   });
@@ -46,16 +46,15 @@ describe('LoginComponent', () => {
 
   it('should change visibility on click', () => {
     component.hide = true;
-    let button =
-      fixture.debugElement.nativeElement.querySelector('.hide-button');
+    const button = fixture.debugElement.nativeElement.querySelector('.hide-button');
     button.click();
     expect(component.hide).toBeFalsy();
   });
 
   it('should receive data from forms', () => {
-    let nativeEl = fixture.nativeElement;
-    let username = nativeEl.querySelector('#username');
-    let password = nativeEl.querySelector('#password');
+    const nativeEl = fixture.nativeElement;
+    const username = nativeEl.querySelector('#username');
+    const password = nativeEl.querySelector('#password');
 
     username.value = 'someVal';
     password.value = 'otherVal';

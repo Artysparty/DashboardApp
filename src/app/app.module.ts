@@ -1,12 +1,9 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DatePipe } from '@angular/common';
 
 import localeRu from '@angular/common/locales/ru';
-
-registerLocaleData(localeRu);
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +25,8 @@ import { LoadingInterceptor } from './shared/services/interceptors/loading.inter
 import { AuthGuard } from './shared/services/guards/auth-guard.service';
 import { LoginComponent } from './pages/login/login.component';
 import { DialogComponent } from './shared/components/dialog/dialog.component';
+
+registerLocaleData(localeRu);
 
 @NgModule({
   declarations: [

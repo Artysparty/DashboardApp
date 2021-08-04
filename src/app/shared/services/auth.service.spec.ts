@@ -45,7 +45,7 @@ describe('AuthService', () => {
     });
 
     const req = httpTestingController.expectOne(
-      'http://localhost:5000/api/login'
+      'http://localhost:5000/api/login',
     );
 
     expect(req.request.method).toEqual('POST');
@@ -61,16 +61,16 @@ describe('AuthService', () => {
       email: 'other@test.ru',
     };
     const expected = 'Test';
-    //Тесты проходят даже при неверном условии, когда они проходить не должны
+    // Тесты проходят даже при неверном условии, когда они проходить не должны
     service.login(body).subscribe((resp) => {
       expect(resp.email).toEqual(!expected);
     });
 
     const req = httpTestingController.expectOne(
-      'http://localhost:5000/api/login'
+      'http://localhost:5000/api/login',
     );
-    
-    //Неверое условие ломает тест, работает верно
+
+    // Неверое условие ломает тест, работает верно
     expect(req.request.method).toEqual('POST');
 
     req.flush(response);

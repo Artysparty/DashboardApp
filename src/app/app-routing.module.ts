@@ -30,27 +30,27 @@ const routes: Routes = [
         component: EmptyLayoutComponent,
         children: [
           { path: '', redirectTo: '/error/not-found', pathMatch: 'full' },
-          { path: 'not-found', component: NotFoundComponent }
-        ]
+          { path: 'not-found', component: NotFoundComponent },
+        ],
       },
       {
-        path: 'app', 
-        component: InnerLayoutComponent, 
+        path: 'app',
+        component: InnerLayoutComponent,
         canActivate: [AuthGuard],
         children: [
           { path: '', redirectTo: '/app/dashboard', pathMatch: 'full' },
-          { path: 'dashboard', component: DashboardComponent }
-        ]
-      }
+          { path: 'dashboard', component: DashboardComponent },
+        ],
+      },
     ],
   },
   {
-    path: '**', redirectTo: '/error/not-found'
-  }
+    path: '**', redirectTo: '/error/not-found',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

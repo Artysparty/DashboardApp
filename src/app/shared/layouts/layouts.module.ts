@@ -19,7 +19,7 @@ import { InnerLayoutComponent } from './inner-layout/inner-layout.component';
   ],
   exports: [
     EmptyLayoutComponent,
-    InnerLayoutComponent
-  ]
+    InnerLayoutComponent,
+  ],
 })
 export class LayoutsModule { }

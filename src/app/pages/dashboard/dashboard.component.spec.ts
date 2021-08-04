@@ -76,10 +76,10 @@ describe('LoginComponent', () => {
 
   it('should initialize fields with given start and end dates', async () => {
     const fromDate = await loader.getHarness<MatInputHarness>(
-      MatInputHarness.with({ selector: '#fromDate' })
+      MatInputHarness.with({ selector: '#fromDate' }),
     );
     const toDate = await loader.getHarness<MatInputHarness>(
-      MatInputHarness.with({ selector: '#toDate' })
+      MatInputHarness.with({ selector: '#toDate' }),
     );
 
     await fromDate.setValue('11.10.2000');

@@ -15,15 +15,14 @@ import { NotificationService } from '../notifications.service';
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-
   constructor(
     private notifService: NotificationService,
     private router: Router,
   ) { }
-  
+
   intercept(
     request: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -34,17 +33,17 @@ export class HttpConfigInterceptor implements HttpInterceptor {
           this.notifService.openSnackBar('Имя пользователя или пароль не могут быть пустыми', false);
         } else if (error.status === 404) {
           this.notifService.openSnackBar('Пользователь не найден', false);
-          const url = this.router.url;
+          const { url } = this.router;
           this.router.navigate(['/error/not-found'], {
             queryParams: {
               returnUrl: url,
-            }
+            },
           });
         } else {
           this.notifService.openSnackBar('Что-то пошло не так', false);
         }
         return throwError(error);
-      })
+      }),
     );
   }
 }

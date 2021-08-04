@@ -10,10 +10,10 @@ export class SessionStorageService {
     sessionStorage.setItem('user', JSON.stringify(user));
   }
 
-  getUser(): LoginResponseDTO | null  {
+  getUser(): LoginResponseDTO | null {
     try {
       return JSON.parse(sessionStorage.user);
-    } catch(e) {
+    } catch (e) {
       console.log(e);
       return null;
     }
