@@ -14,8 +14,8 @@ import {
 import { Overlay } from '@angular/cdk/overlay';
 import { BehaviorSubject } from 'rxjs';
 
-import { LoadingInterceptor } from './loading.interceptor';
 import { LoadingService } from 'src/app/shared/services/loading.service';
+import { LoadingInterceptor } from './loading.interceptor';
 
 const testUrl = '/data';
 
@@ -57,7 +57,7 @@ describe('LoadingInterceptor', () => {
         },
         (next: HttpHandler) => {
           expect(loadingMock.isLoading.next).toHaveBeenCalledWith(false);
-        }
+        },
       );
       const req = httpMock.expectOne(testUrl);
       req.flush(emsg, { status: 200, statusText: 'OK' });

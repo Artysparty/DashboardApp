@@ -7,18 +7,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Location } from '@angular/common';
 
-import { NotFoundComponent } from './not-found.component';
 import { AppMaterialModule } from 'src/app/shared/app-material.module';
+import { NotFoundComponent } from './not-found.component';
 
 describe('NotFoundComponent', () => {
   let component: NotFoundComponent;
   let fixture: ComponentFixture<NotFoundComponent>;
-  let routerMock = { navigateByUrl: jest.fn() };
-  let locationMock = { back: jest.fn() };
-  let fakeActivatedRoute: RouteInterface = {
+  const routerMock = { navigateByUrl: jest.fn() };
+  const locationMock = { back: jest.fn() };
+  const fakeActivatedRoute: RouteInterface = {
     snapshot: {
       queryParams: {
-        returnUrl: "some",
+        returnUrl: 'some',
       },
     },
   };
@@ -33,13 +33,13 @@ describe('NotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotFoundComponent ],
+      declarations: [NotFoundComponent],
       providers: [
         { provide: Location, useValue: locationMock },
         { provide: ActivatedRoute, useValue: fakeActivatedRoute },
         { provide: Router, useValue: routerMock },
       ],
-      imports: [ AppMaterialModule ]
+      imports: [AppMaterialModule],
     }).compileComponents();
   });
 
@@ -64,7 +64,7 @@ describe('NotFoundComponent', () => {
         expect(exitSpy).toHaveBeenCalled();
         expect(navigateSpy).toHaveBeenCalled();
       });
-    })
+    }),
   );
 
   it(
@@ -78,6 +78,6 @@ describe('NotFoundComponent', () => {
         expect(exitSpy).toHaveBeenCalled();
         expect(locationSpy).toHaveBeenCalled();
       });
-    })
+    }),
   );
 });

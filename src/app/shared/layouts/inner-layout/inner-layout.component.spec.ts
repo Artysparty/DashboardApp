@@ -11,7 +11,7 @@ import { InnerLayoutComponent } from './inner-layout.component';
 describe('InnerLayoutComponent', () => {
   let component: InnerLayoutComponent;
   let fixture: ComponentFixture<InnerLayoutComponent>;
-  let routerMock = { navigate: jest.fn() };
+  const routerMock = { navigate: jest.fn() };
   const user: LoginResponseDTO = {
     id: 1,
     firstName: 'Test',
@@ -42,7 +42,7 @@ describe('InnerLayoutComponent', () => {
     component.user = user;
     fixture.detectChanges();
     expect(
-      fixture.debugElement.nativeElement.querySelector('small').textContent
+      fixture.debugElement.nativeElement.querySelector('small').textContent,
     ).toContain(`${component.user.firstName} ${component.user.lastName}`);
   });
 
@@ -54,7 +54,7 @@ describe('InnerLayoutComponent', () => {
       fixture.detectChanges();
       const spy = jest.spyOn(component, 'exit');
       const button = fixture.debugElement.nativeElement.querySelector(
-        '[data-qa-id="exitBtn"]'
+        '[data-qa-id="exitBtn"]',
       );
       button.click();
       fixture.whenStable().then(() => {
@@ -62,6 +62,6 @@ describe('InnerLayoutComponent', () => {
         expect(sessionStorage.getItem('user')).toBeFalsy();
         expect(routerMock.navigate).toHaveBeenCalledWith(['/auth/login']);
       });
-    })
+    }),
   );
 });

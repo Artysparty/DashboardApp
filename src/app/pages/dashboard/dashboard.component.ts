@@ -28,9 +28,10 @@ import {
 })
 export class DashboardComponent implements OnDestroy {
   response!: DataResponseDTO;
+
   responseOperations!: OperationDTO[];
 
-  //dates
+  // dates
   form = this.fb.group({
     range: this.fb.group({
       fromDate: [null, [Validators.required]],
@@ -39,10 +40,12 @@ export class DashboardComponent implements OnDestroy {
   });
 
   chartData: ChartDTO[] = [];
+
   fullChartData: MultiDTO[] = [];
 
-  //table
+  // table
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   @ViewChild(MatSort) sort!: MatSort;
 
   displayedColumns: string[] = [
@@ -52,6 +55,7 @@ export class DashboardComponent implements OnDestroy {
     'balance',
     'transactionDescription',
   ];
+
   dataSource!: MatTableDataSource<OperationDTO>;
 
   private subscriptions$ = new Subscription();
@@ -72,27 +76,27 @@ export class DashboardComponent implements OnDestroy {
     const user = this.storageService.getUser();
     this.subscriptions$.add(
       this.dataService
-      .getData({ user, ...this.form.value.range })
-      .subscribe((response: DataResponseDTO) => {
-        this.response = response;
-        this.responseOperations = response.operations;
-        this.dataSource = new MatTableDataSource(response.operations);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        response.operations.forEach((opertion) => {
-          let op: ChartDTO = {
-            value: opertion.balance,
-            name: this.formatDate(opertion.operationDate) ?? '',
+        .getData({ user, ...this.form.value.range })
+        .subscribe((response: DataResponseDTO) => {
+          this.response = response;
+          this.responseOperations = response.operations;
+          this.dataSource = new MatTableDataSource(response.operations);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          response.operations.forEach((opertion) => {
+            const op: ChartDTO = {
+              value: opertion.balance,
+              name: this.formatDate(opertion.operationDate) ?? '',
+            };
+            this.chartData.push(op);
+          });
+          const fullChartDataLine = {
+            name: 'balance',
+            series: this.chartData,
           };
-          this.chartData.push(op);
-        });
-        const fullChartDataLine = {
-          name: 'balance',
-          series: this.chartData,
-        };
 
-        this.fullChartData = [...[fullChartDataLine]];
-      })
+          this.fullChartData = [...[fullChartDataLine]];
+        }),
     );
   }
 

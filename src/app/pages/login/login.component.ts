@@ -16,6 +16,7 @@ import { LoginResponseDTO } from 'src/app/shared/models/user.dto';
 })
 export class LoginComponent implements OnDestroy {
   form: FormGroup;
+
   hide = true;
 
   private subscriptions$ = new Subscription();
@@ -43,7 +44,7 @@ export class LoginComponent implements OnDestroy {
         .subscribe((response: LoginResponseDTO) => {
           this.storageService.saveUser(response);
           this.router.navigate(['/app/dashboard']);
-        })
+        }),
     );
   }
 }

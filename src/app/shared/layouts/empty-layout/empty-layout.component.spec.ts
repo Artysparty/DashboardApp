@@ -8,9 +8,9 @@ describe('EmptyLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmptyLayoutComponent ]
+      declarations: [EmptyLayoutComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -12,7 +12,9 @@ describe('DataService', () => {
   let service: DataService;
   let httpTestingController: HttpTestingController;
   const data: DataRequestDTO = {
-    user: { id: 1, firstName: 'Test', lastName: 'Test', email: 'test@test.ru' },
+    user: {
+      id: 1, firstName: 'Test', lastName: 'Test', email: 'test@test.ru',
+    },
     fromDate: new Date('16/06/2021'),
     toDate: new Date('17/06/2021'),
   };
@@ -60,7 +62,7 @@ describe('DataService', () => {
     });
 
     const req = httpTestingController.expectOne(
-      'http://localhost:5000/api/data'
+      'http://localhost:5000/api/data',
     );
 
     expect(req.request.method).toEqual('PUT');

@@ -7,12 +7,12 @@ describe('DataService', () => {
   let service: NotificationService;
 
   const mockMatSnackBar = {
-      open: jest.fn()
-  }
+    open: jest.fn(),
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ NotificationService , {provide: MatSnackBar, useValue: mockMatSnackBar}],
+      providers: [NotificationService, { provide: MatSnackBar, useValue: mockMatSnackBar }],
     });
     service = TestBed.get(NotificationService);
   });
@@ -22,8 +22,8 @@ describe('DataService', () => {
   });
 
   it('should run method', () => {
-      const spy = jest.spyOn(service, 'openSnackBar');
-      service.openSnackBar('sad', true);
-      expect(spy).toHaveBeenCalled();
-  })
+    const spy = jest.spyOn(service, 'openSnackBar');
+    service.openSnackBar('sad', true);
+    expect(spy).toHaveBeenCalled();
+  });
 });

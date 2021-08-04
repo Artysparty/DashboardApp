@@ -33,7 +33,7 @@ describe('ErrorInterceptor', () => {
     let httpMock: HttpTestingController;
 
     let routerMock = { navigate: jest.fn() };
-    let notificationMock = { openSnackBar: jest.fn() };
+    const notificationMock = { openSnackBar: jest.fn() };
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -70,7 +70,7 @@ describe('ErrorInterceptor', () => {
         (error: HttpErrorResponse) => {
           expect(notificationMock).toHaveBeenCalledWith(emsg);
           expect(routerMock).toHaveBeenCalledWith(['auth/login']);
-        }
+        },
       );
       const req = httpMock.expectOne(testUrl);
       req.flush(emsg, { status: 401, statusText: 'Unauthorized' });
@@ -83,7 +83,7 @@ describe('ErrorInterceptor', () => {
         (error: HttpErrorResponse) => {
           expect(notificationMock).toHaveBeenCalledWith(emsg);
           expect(routerMock).toHaveBeenCalledWith(['/error/not-found']);
-        }
+        },
       );
       const req = httpMock.expectOne(testUrl);
       req.flush(emsg, { status: 404, statusText: 'Not found' });
@@ -95,7 +95,7 @@ describe('ErrorInterceptor', () => {
         (res) => fail('should have failed with the 400 error'),
         (error: HttpErrorResponse) => {
           expect(notificationMock).toHaveBeenCalledWith(emsg);
-        }
+        },
       );
       const req = httpMock.expectOne(testUrl);
       req.flush(emsg, { status: 400, statusText: 'Not found' });

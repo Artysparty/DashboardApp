@@ -8,7 +8,7 @@ import { AuthGuard } from './auth-guard.service';
 describe('AuthGuard', () => {
   let injector: TestBed;
   let guard: AuthGuard;
-  let routerMock = { navigateByUrl: jest.fn() };
+  const routerMock = { navigateByUrl: jest.fn() };
 
   beforeEach(() => {
     TestBed.configureTestingModule({

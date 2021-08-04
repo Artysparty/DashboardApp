@@ -9,6 +9,6 @@ export class NotificationService {
   constructor(private snackBar: MatSnackBar) {}
 
   openSnackBar(message: string, flag: boolean): void {
-    this.snackBar.open(message, undefined, { duration: 5000, panelClass: flag ? "bg-success" : "bg-error"});
+    this.snackBar.open(message, undefined, { duration: 5000, panelClass: flag ? 'bg-success' : 'bg-error' });
   }
 }

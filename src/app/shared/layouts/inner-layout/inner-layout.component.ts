@@ -15,7 +15,7 @@ export class InnerLayoutComponent {
 
   constructor(
     private storageService: SessionStorageService,
-    private router: Router
+    private router: Router,
   ) {
     this.user = this.storageService.getUser();
   }

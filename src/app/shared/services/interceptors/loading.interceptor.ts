@@ -20,8 +20,7 @@ export class LoadingInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       finalize(() => {
         this.loadingService.isLoading.next(false);
-      })
+      }),
     );
   }
-
 }

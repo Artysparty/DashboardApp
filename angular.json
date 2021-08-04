@@ -87,9 +87,21 @@
           "options": {
             "browserTarget": "DashboardApp:build"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "DashboardApp"
+  "defaultProject": "DashboardApp",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
