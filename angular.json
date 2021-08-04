@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "siblion-dashboard": {
+    "DashboardApp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/siblion-dashboard",
+            "outputPath": "dist/DashboardApp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,11 +73,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "siblion-dashboard:build:production"
+              "browserTarget": "DashboardApp:build:production"
             },
             "development": {
               "port": 4301,
-              "browserTarget": "siblion-dashboard:build:development"
+              "browserTarget": "DashboardApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,11 +85,11 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "siblion-dashboard:build"
+            "browserTarget": "DashboardApp:build"
           }
         }
       }
     }
   },
-  "defaultProject": "siblion-dashboard"
+  "defaultProject": "DashboardApp"
 }
